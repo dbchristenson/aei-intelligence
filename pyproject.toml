@@ -1,0 +1,9 @@
+[project]
+name = "aei"
+version = "0.1.0"
+description = "Building out AEI intelligence"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django==5.2",
+]
