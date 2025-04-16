@@ -1,6 +1,14 @@
 import pypdfium2 as pdfium
+from django.core.files import File
 
 from aei.settings import MEDIA_ROOT
 from applibrary.models import IMAGE, PDF
+from applibrary.utils.loggers import basic_logging
 
-pdf = pdfium.PdfDocument()
+basic_logging(__name__)
+
+
+def open_pdf(file: File):
+    """"""
+
+    return
