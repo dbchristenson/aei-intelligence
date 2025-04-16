@@ -43,6 +43,7 @@ class PDF(models.Model):
     Attributes:
         file (FileField): The actual pdf file.
         name (CharField): The name of the pdf file.
+        text (TextField): The text extracted from the pdf.
         date (DateTimeField): The date when the pdf was written or published.
     """
 
@@ -56,7 +57,15 @@ class PDF(models.Model):
 
 
 class PPTX(models.Model):
-    """This model is used to store the pptx files and their data."""
+    """
+    This model is used to store the pptx files and their data.
+
+    Attributes:
+        file (FileField): The actual pptx file.
+        name (CharField): The name of the pptx file.
+        context (CharField): The context of the pptx presentation.
+        date (DateTimeField): The date when the pptx was written or published.
+    """
 
     file = models.FileField(upload_to="pptx_files/")
     name = models.CharField(max_length=255)  # name of the file
@@ -68,7 +77,15 @@ class PPTX(models.Model):
 
 
 class SLIDE(models.Model):
-    """This model is used to store the slide images and their text."""
+    """
+    This model is used to store the slide images and their text.
+
+    Attributes:
+        pptx (ForeignKey): A reference to the PPTX model instance.
+        image (ImageField): The actual image of the slide.
+        text (TextField): The text extracted from the slide.
+        context (CharField): The context of the slide.
+    """
 
     pptx = models.ForeignKey(PPTX, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="slide_images/")
@@ -77,14 +94,30 @@ class SLIDE(models.Model):
 
 
 class EXCEL(models.Model):
-    """This model is used to store the excel files and their data."""
+    """
+    This model is used to store the excel files and their data.
+
+    Attributes:
+        file (FileField): The actual excel file.
+        name (CharField): The name of the excel file.
+        context (CharField): The context of the excel file.
+        date (DateTimeField): The date when the excel was written or published.
+    """
 
     def __str__(self):
         return self
 
 
 class WORD(models.Model):
-    """This model is used to store the word files and their text."""
+    """
+    This model is used to store the word files and their text.
+
+    Attributes:
+        file (FileField): The actual word file.
+        name (CharField): The name of the word file.
+        text (TextField): The text extracted from the word document.
+        date (DateTimeField): The date when the word document was published.
+    """
 
     file = models.FileField(upload_to="word_files/")
     name = models.CharField(max_length=255)  # name of the file
